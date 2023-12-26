@@ -1,0 +1,17 @@
+<RCC>
+    <qresource prefix="/pic_sources">
+        <file>imgs/background.png</file>
+        <file>imgs/card_empty.png</file>
+        <file>imgs/card1.png</file>
+        <file>imgs/card2.png</file>
+        <file>imgs/card3.png</file>
+        <file>imgs/card4.png</file>
+        <file>imgs/card5.png</file>
+        <file>imgs/card6.png</file>
+        <file>imgs/aboutImage.png</file>
+        <file>imgs/leaderBoardImage.png</file>
+        <file>imgs/startGameImage.png</file>
+        <file>imgs/backtoMain.png</file>
+        <file>imgs/quitGame.png</file>
+    </qresource>
+</RCC>
