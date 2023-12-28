@@ -21,7 +21,6 @@ signals:
 
 private slots:
     void on_backToMainButton_clicked();
-    void on_quitGameButton_clicked();
 private:
     Ui::AboutWindow *ui;
     QLabel* aboutTextLabel = nullptr;

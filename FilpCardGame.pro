@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui widgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -27,18 +27,31 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     aboutwindow.cpp \
-    util.cpp
+    util.cpp \
+    leaderboardwindow.cpp \
+    leaderboardlogic.cpp \
+    mycard.cpp \
+    gamelogic.cpp \
+    gamewindow.cpp
 
 
 HEADERS += \
         mainwindow.h \
     aboutwindow.h \
-    util.h
+    util.h \
+    leaderboardwindow.h \
+    leaderboardlogic.h \
+    mycard.h \
+    gamelogic.h \
+    gamewindow.h
+
 
 
 FORMS += \
         mainwindow.ui \
-    aboutwindow.ui
+    aboutwindow.ui \
+    leaderboardwindow.ui \
+    gamewindow.ui
 
 RESOURCES += \
     resources.qrc

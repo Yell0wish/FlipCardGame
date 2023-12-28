@@ -1,5 +1,13 @@
 #include "util.h"
 #include <vector>
+#include <QMessageBox>
+#include <QApplication>
+#include <QFile>
+#include <QTextStream>
+#include <QStringList>
+#include <QDebug>
+
+
 
 void Utils::setupBackground(QWidget *widget, const QString &imagePath) {
     QPixmap backgroundImage(imagePath);
@@ -18,19 +26,27 @@ QPushButton *Utils::createButton(QWidget *parent, const QString &imagePath, cons
     return button;
 }
 
-//void MainWindow::initializeButtons(QWidget* widget, QSize size, std::vector buttons) {
-//    // 初始化各个按钮
-//    QSize buttonSize(375, 106);
+void Utils::setTextLabel(QLabel* label, const QString& text, const QRect& geometry) {
+    label->setStyleSheet("QLabel { color : #800000	; font-family: Arial; font-size: 15pt;}");
+    label->setAlignment(Qt::AlignCenter);
+    label->setText(text);
+    label->setGeometry(geometry);  // 设置位置和大小
+    label->show();  // 显示QLabel
+}
 
-//    startGameButton = Utils::createButton(this, ":/pic_sources/imgs/startGameImage.png", buttonSize);
-//    startGameButton->move(320, 200);
-//    connect(startGameButton, &QPushButton::clicked, this, &MainWindow::on_startGameButton_clicked);
+void Utils::on_quitGameButton_clicked(QWidget* widget) {
+    // 显示一个对话框确认用户是否真的想要退出
+    QMessageBox::StandardButton reply;
+    reply = QMessageBox::question(widget, "退出游戏", "您确定要退出游戏吗?",
+                                  QMessageBox::Yes|QMessageBox::No);
 
-//    leaderboardButton = Utils::createButton(this, ":/pic_sources/imgs/leaderBoardImage.png", buttonSize);
-//    leaderboardButton->move(320, 350);
-//    connect(leaderboardButton, &QPushButton::clicked, this, &MainWindow::on_leaderboardButton_clicked);
+    if (reply == QMessageBox::Yes) {
+        // 如果用户确认，关闭应用程序
+        widget->close();
+        QApplication::quit();
+    }
 
-//    aboutButton = Utils::createButton(this, ":/pic_sources/imgs/aboutImage.png", buttonSize);
-//    aboutButton->move(320, 500);
-//    connect(aboutButton, &QPushButton::clicked, this, &MainWindow::on_aboutButton_clicked);
-//}
+}
+
+
+

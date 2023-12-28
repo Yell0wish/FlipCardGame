@@ -17,11 +17,8 @@ AboutWindow::AboutWindow(QWidget *parent) :
     Utils::setupBackground(this, ":/pic_sources/imgs/background.png");
     initializeButtons();
     // 设置QLabel属性
-    aboutTextLabel->setStyleSheet("QLabel { color : #800000	; font-family: Arial; font-size: 14pt;}");
-    aboutTextLabel->setWordWrap(true);
-    aboutTextLabel->setText("本游戏由叶理炜开发 Github项目地址：");
-    aboutTextLabel->setGeometry(QRect(50, 50, 400, 100));  // 设置位置和大小
-    aboutTextLabel->show();  // 显示QLabel
+    QString text = "关于我们 \n\n 本游戏由叶理炜开发 \n\n Github项目地址：https://github.com/Yell0wish/FlipCardGame \n\n 喜欢的话可以点个星喵~";
+    Utils::setTextLabel(aboutTextLabel, text, QRect(50, 100, 900, 300));
 }
 
 
@@ -35,7 +32,7 @@ void AboutWindow::initializeButtons() {
 
     quitGameButton = Utils::createButton(this, ":/pic_sources/imgs/quitGame.png", buttonSize);
     quitGameButton->move(320, 650);
-    connect(quitGameButton, &QPushButton::clicked, this, &AboutWindow::on_quitGameButton_clicked);
+    connect(quitGameButton, &QPushButton::clicked, this, [&](){Utils::on_quitGameButton_clicked(this);});
 
 }
 
@@ -48,20 +45,6 @@ AboutWindow::~AboutWindow()
 void AboutWindow::on_backToMainButton_clicked() {
     this->close();// 关闭后自动释放内存
     emit requestShowMain();  // 发出信号
-}
-
-void AboutWindow::on_quitGameButton_clicked() {
-    // 显示一个对话框确认用户是否真的想要退出
-    QMessageBox::StandardButton reply;
-    reply = QMessageBox::question(this, "退出游戏", "您确定要退出游戏吗?",
-                                  QMessageBox::Yes|QMessageBox::No);
-
-    if (reply == QMessageBox::Yes) {
-        // 如果用户确认，关闭应用程序
-        this->close();
-        QApplication::quit();
-    }
-
 }
 
 void AboutWindow::closeEvent(QCloseEvent *event) {
