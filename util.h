@@ -10,8 +10,8 @@
 
 class Utils {
 public:
-    static void setupBackground(QWidget *widget, const QString &imagePath);
-    static QPushButton *createButton(QWidget *parent, const QString &imagePath, const QSize &size);
+    static void setupBackground(QWidget* widget, const QString& imagePath);
+    static QPushButton* createButton(QWidget* parent, const QString& imagePath, const QSize& size);
     static void setTextLabel(QLabel* label, const QString& text, const QRect& geometry);
     static void on_quitGameButton_clicked(QWidget* widget);
 };

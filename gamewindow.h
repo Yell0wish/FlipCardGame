@@ -22,22 +22,24 @@ protected:
     void hideEvent(QHideEvent *event) override;
 private:
     Ui::GameWindow *ui;
+
     QPushButton* backToMainButton = nullptr;
     QPushButton* quitGameButton = nullptr;
-    void initializeButtons();
-    bool isFirstShow = false;
-    void cardShow(const QVector<MyCard*>& cards);
-    QLabel* timerLabel;
-
     QTimer* timer;
     int elapsedSeconds;
     QLabel* timeLabel = nullptr;
+    bool isFirstShow = false;
 
+    void initializeButtons();
+    void cardShow(const QVector<MyCard*>& cards);
+    void resetGame();
+    void showEndGameDialog(int score);
 signals:
     void requestShowMain(); // 唤醒主界面
 
 public slots:
     void updateTimer();
+    void finishedShow();
 
 private slots:
     void on_backToMainButton_clicked();

@@ -9,7 +9,7 @@
 
 
 
-void Utils::setupBackground(QWidget *widget, const QString &imagePath) {
+void Utils::setupBackground(QWidget* widget, const QString &imagePath) {
     QPixmap backgroundImage(imagePath);
     widget->setFixedSize(backgroundImage.size());
     QPalette palette;
@@ -17,7 +17,7 @@ void Utils::setupBackground(QWidget *widget, const QString &imagePath) {
     widget->setPalette(palette);
 }
 
-QPushButton *Utils::createButton(QWidget *parent, const QString &imagePath, const QSize &size) {
+QPushButton* Utils::createButton(QWidget* parent, const QString &imagePath, const QSize &size) {
     QPixmap pixmap(imagePath);
     QPushButton *button = new QPushButton(parent);
     button->setIcon(QIcon(pixmap));
@@ -43,7 +43,7 @@ void Utils::on_quitGameButton_clicked(QWidget* widget) {
     if (reply == QMessageBox::Yes) {
         // 如果用户确认，关闭应用程序
         widget->close();
-        QApplication::quit();
+        QApplication::quit(); // MainWindow类一定会析构 因此以它为父类的其他window也会自动析构
     }
 
 }

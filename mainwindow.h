@@ -6,6 +6,7 @@
 #include "aboutwindow.h"
 #include "mycard.h"
 #include "gamewindow.h"
+#include "leaderboardwindow.h"
 
 namespace Ui {
 class MainWindow;
@@ -20,9 +21,11 @@ public:
     ~MainWindow();
 
 private:
-    Ui::MainWindow *ui;
+    Ui::MainWindow* ui;
 
     GameWindow *gameWindow = nullptr;
+    LeaderBoardWindow* leaderBoardWindow = nullptr;
+    AboutWindow* aboutWindow = nullptr;
 
     // 开始游戏按钮
     QPushButton* startGameButton = nullptr;
@@ -34,7 +37,6 @@ private:
     QPushButton* quitGameButton = nullptr;
     // 函数
     void initializeButtons(); // 按钮加载
-    void closeEvent(QCloseEvent *event);
 private slots:// 槽函数声明
     void on_startGameButton_clicked();
     void on_leaderboardButton_clicked();

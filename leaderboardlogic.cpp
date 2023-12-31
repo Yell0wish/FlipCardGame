@@ -19,7 +19,7 @@ LeaderBoardLogic::LeaderBoardLogic()
 
 }
 
-QString LeaderBoardLogic::getLeaderBoardString() {
+QString LeaderBoardLogic::getLeaderBoardString() const {
     QString leaderBoardString;
     for (auto element : leaderBoard) {
         leaderBoardString += element.first + " : " + QString::number(element.second) + "\n";
@@ -81,7 +81,7 @@ void LeaderBoardLogic::insertIntoLeaderBoard(const QString& name, int score, int
     leaderBoard.insert(leaderBoard.begin() + rank, QPair<QString, int>(name, score));
 }
 
-int LeaderBoardLogic::rankInLeaderBoard(int score) {
+int LeaderBoardLogic::rankInLeaderBoard(int score) const {
     int rank = -1;
     for (int i = 0; i < leaderBoard.size(); i++) {
         if (score >= leaderBoard[i].second) {

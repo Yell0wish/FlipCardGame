@@ -17,11 +17,11 @@ public:
         return instance;
     }
 
-    QVector<QPair<QString, int>> getLeaderBoard() {return leaderBoard;}
-    QString getLeaderBoardString();
+    QVector<QPair<QString, int>> getLeaderBoard() const{return leaderBoard;}
+    QString getLeaderBoardString() const;
 
     void insertIntoLeaderBoard(const QString& name, int score, int rank);
-    int rankInLeaderBoard(int score);
+    int rankInLeaderBoard(int score) const;
     void updateLeaderBoardFile();
 
 private:

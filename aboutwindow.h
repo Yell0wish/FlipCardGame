@@ -26,8 +26,8 @@ private:
     QLabel* aboutTextLabel = nullptr;
     QPushButton* backToMainButton = nullptr;
     QPushButton* quitGameButton = nullptr;
+
     void initializeButtons();
-    void closeEvent(QCloseEvent *event);
 };
 
 #endif // ABOUTWINDOW_H

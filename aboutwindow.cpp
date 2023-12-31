@@ -4,11 +4,14 @@
 #include <mainwindow.h>
 #include <QMessageBox>
 #include "util.h"
+#include <QStandardPaths>
 
 AboutWindow::AboutWindow(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::AboutWindow),
-    aboutTextLabel(new QLabel(this))
+    aboutTextLabel(new QLabel(this)),
+    backToMainButton(nullptr),
+    quitGameButton(nullptr)
 {
     qDebug() << "yes";
     ui->setupUi(this);
@@ -17,7 +20,8 @@ AboutWindow::AboutWindow(QWidget *parent) :
     Utils::setupBackground(this, ":/pic_sources/imgs/background.png");
     initializeButtons();
     // 设置QLabel属性
-    QString text = "关于我们 \n\n 本游戏由叶理炜开发 \n\n Github项目地址：https://github.com/Yell0wish/FlipCardGame \n\n 喜欢的话可以点个星喵~";
+    QString dataPath = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
+    QString text = "排行榜数据存储路径：\n" + dataPath  +  "\n\n 本游戏由叶理炜开发 \n Github项目地址：https://github.com/Yell0wish/FlipCardGame \n\n 喜欢的话可以点个星喵~";
     Utils::setTextLabel(aboutTextLabel, text, QRect(50, 100, 900, 300));
 }
 
@@ -43,10 +47,8 @@ AboutWindow::~AboutWindow()
 }
 
 void AboutWindow::on_backToMainButton_clicked() {
-    this->close();// 关闭后自动释放内存
+    this->hide();
     emit requestShowMain();  // 发出信号
 }
 
-void AboutWindow::closeEvent(QCloseEvent *event) {
-    qDebug() << "deleteaaa";
-}
+

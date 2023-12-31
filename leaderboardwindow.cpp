@@ -17,7 +17,9 @@
 LeaderBoardWindow::LeaderBoardWindow(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::LeaderBoardWindow),
-    leaderBoardLabel(new QLabel(this))
+    leaderBoardLabel(new QLabel(this)),
+    backToMainButton(nullptr),
+    quitGameButton(nullptr)
 {
     ui->setupUi(this);
     this->setWindowTitle("LeaderBoard");
@@ -52,6 +54,6 @@ void LeaderBoardWindow::initializeButtons() {
 }
 
 void LeaderBoardWindow::on_backToMainButton_clicked() {
-    this->close();// 关闭后自动释放内存
+    this->hide();
     emit requestShowMain();  // 发出信号
 }
